@@ -1,0 +1,6 @@
+streamlit
+langchain
+openai
+faiss-cpu
+requests
+pickle-mixin
