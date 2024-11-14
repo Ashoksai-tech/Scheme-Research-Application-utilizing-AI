@@ -6,8 +6,8 @@ import faiss
 import pickle
 import numpy as np
 
-# Load DistilBART-cnn for summarization
-summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
+# Load facebook/bart-large-cnn for summarization
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 
 # Load SBERT for embeddings
 embedder = SentenceTransformer('all-MiniLM-L6-v2')
@@ -27,6 +27,7 @@ def summarize_content(content, category):
     text_chunks = split_text(prompt)
     summaries = []
     for chunk in text_chunks:
+        # Summarize each chunk using facebook/bart-large-cnn
         summary = summarizer(chunk, max_length=150, min_length=50, do_sample=False)
         summaries.append(summary[0]['summary_text'])
     return " ".join(summaries)
@@ -92,8 +93,11 @@ if query:
 
 # Save summarized content
 if st.button("Save Summary"):
-    with open("summary.txt", "w") as file:
-        file.write(f"URL: {url_input}\n")
-        for cat, summary in summaries.items():
-            file.write(f"{cat}: {summary}\n")
-    st.success("Summary saved successfully!")
+    if summaries:
+        with open("summary.txt", "w") as file:
+            file.write(f"URL: {url_input}\n")
+            for cat, summary in summaries.items():
+                file.write(f"{cat}: {summary}\n")
+        st.success("Summary saved successfully!")
+    else:
+        st.warning("Please process a URL first to generate summaries.")

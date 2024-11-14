@@ -1,4 +1,3 @@
-# Import necessary libraries
 import streamlit as st
 import openai
 import faiss
@@ -9,13 +8,9 @@ from openai.embeddings_utils import get_embedding
 
 # Set OpenAI API Key
 
-import os
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = "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"
 
-
- 
-
- 
+# Function to read URLs and fetch content
 # Function to read URLs and fetch content
 def load_content_from_url(url):
     try:
@@ -41,7 +36,7 @@ def summarize_content(content, category):
     )
     return response.choices[0].message['content'].strip()
 
- 
+# Get embedding vector for text using OpenAI's embedding model
 # Get embedding vector for text using OpenAI's embedding model
 def get_embedding_vector(text):
     response = openai.Embedding.create(
