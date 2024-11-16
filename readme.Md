@@ -1,6 +1,6 @@
 ### **Project Documentation: Scheme Research Tool**
 
----
+ 
 
 ### **1. Introduction**
 
@@ -120,7 +120,3 @@ The **Scheme Research Tool** is a web-based application that extracts, processes
 ### **8. Conclusion**
 
 The Scheme Research Tool effectively streamlines the process of extracting, summarizing, and interacting with government scheme data. Despite the absence of OpenAI APIs, the project successfully delivers valuable insights using alternative tools like FireCrawl, DistilBART, and SBERT. Future enhancements, including OpenAI API integration, can elevate the tool's performance significantly.
-
----
-
-This updated documentation highlights the tools and methods used while addressing limitations and future potential, ensuring professionalism and thoroughness.
